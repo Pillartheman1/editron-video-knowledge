@@ -12,6 +12,7 @@ Clients covered: **Zaidi Jewelers** (a jewelry store launch campaign: vertical R
 5. `audio.md`: music start, loudness, SFX, ADR/lip-sync swaps, phone EQ, dereverb.
 6. `resolve-notes.md`: how to translate all of this into Resolve. Read it before writing any Resolve script.
 7. `luts/`: the three fitted `.cube` LUTs.
+8. `LEARNINGS.md`: the live session log from Resolve (RH-4 on 18 Oct 2026, including his real node tree). It is not a style rule. Promote a line into the file that owns the topic only after Daniel confirms it. In the local skill those style files live under `references/`; in this repo they are the files at the root.
 
 ## Standing preferences (apply to every job)
 - **Footage** lives on Daniel's **T7 Shield** external drive, organised by client (e.g. `/Volumes/T7 Shield/Client footage/Zaidi/Zaidi 2/Videos/C0xxx.MP4`).
@@ -27,6 +28,7 @@ Clients covered: **Zaidi Jewelers** (a jewelry store launch campaign: vertical R
 - Before an edit: read the client file plus `shot-selection.md`, then build a shot plan that passes the checklist.
 - Before delivery: run the QC list in `workflow-and-qc.md`.
 - When Daniel gives feedback: add it to the feedback history in `workflow-and-qc.md` as **note → general rule**, the same way the existing entries are written.
+- Read `LEARNINGS.md` before trusting a fitted LUT or an assumed node tree. The log wins for what was measured. It does not replace a style file until he confirms the promotion.
 
 ## Provenance
 Compiled Oct 18 2026 from `/workspace/editing-style-guide.md`, `/workspace/zaidi-grade-notes.md`, `zaidi4–8/PROGRESS.md`, `zaidi/adr/PROGRESS.md`, `chainlink-edit/c0141/PROGRESS.md`, `chainlink-edit/brand_brief.md`, `zaidi/brand.md`, the caption scripts (`zaidi/make_subs.py`, `zaidi/v7.py`, `zaidi2/build8/cap.py`, `zaidi4/build3/title.py`) and the Chainlink build scripts (`chainlink-edit/c0142/build.py`, `path.py`). Example stills were left out (the upload path only supports text files); the comparison images are listed by path in `color-grading.md`.
