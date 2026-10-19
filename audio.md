@@ -53,3 +53,29 @@ Job: replace only Leena's (the automated voice's) lines with new takes, leaving 
 
 ## 6. Chainlink voice
 See `clients/chainlink.md` §8: HPF 70, afftdn, match EQ, loudnorm −16. 8 ms fades on every cut piece.
+
+## 7. Oct 18 2026 lessons
+*Promoted Oct 18 2026 at Daniel's request ("learn from everything we worked on today"). Measurements stay in `LEARNINGS.md`; where a rule cites a section (e.g. L§13) that log is the evidence and wins on numbers.*
+
+### 7a. Dialogue cuts: never clip word endings (Chainlink C0141, Daniel: "endings clipped")
+- **Rule:** the ~60 ms max gap is only BETWEEN words (removed pauses). Every out-point (segment end AND before every removed pause) runs from the last voiced frame until the decay sits at noise floor +6 dB for 40 ms: **tail ≥120 ms, ≤250 ms**, ending ≥30 ms before the next voiced frame. A word still voiced at the planned out is finished (up to +0.3 s). End frames round UP. Pre-roll 60 ms (was 40). Pieces with <100 ms voiced (breath blips) dropped.
+- **Why:** trailing consonants and breaths decay over 100–250 ms; cutting at the 'end' of a word by transcript timestamps clips the last phoneme. Daniel heard it on v1.
+- **Implementation:** `/workspace/chainlink-edit/c0141/build2.py` (envelope read a−0.25 to b+0.45; edl 3rd value 1 = hard end, 4th = hard start).
+- **QC:** RMS at every out-point ≥20 dB below the segment's speech p95 (A v2 min 23 dB; B min 14.9 dB where the next source word starts 80 ms later and the tail is capped).
+- **Sub-word cuts:** when removing a stutter inside a segment, cut at the lowest-energy point between phonemes (10 ms RMS minimum), never in a voiced region.
+
+### 7b. Throat clears and non-words
+- Cut throat clears, coughs, lip smacks and non-word blips. Whisper often hallucinates a word ("Thank you") on them. Find them as short (<300 ms) voiced events with no transcribed word in a short-window pass. *C0143 v2: 240 ms blip 641.54–641.78 removed with the seg start moved to 642.2.*
+
+### 7c. No Foley on Zaidi narrative Reels (RH-4)
+- Daniel rejected a 3-cue Foley pass (spoon, page, sit) as "terrible" and deleted it (L§12). The song is the only audio. Camera audio stays off. This confirms the older rule (§SFX: at most one subtle effect, Zaidi 5 "Paper SFX too much") and tightens it: **default to zero SFX on Zaidi Reels unless Daniel asks.**
+- Wrong-material SFX weld to the wrong object (mug spoon on a paper cup, leather on a metal bench): never use them.
+
+### 7d. Music in-point and fade (RH-4)
+- Music in = timeline frame 572 (19.086 s) into the Lissvik rework, chosen because a near-silent gap at 19.0 s is followed by a hit at 19.1 s (section downbeat). Daniel kept it through his recut and lengthened the item, not moved it. His export fades the song over ~1 s at the end (24.0–25.06 s) under the fading logo card.
+- Measured audible start in his export ≈19.04 s vs 19.10 s in our ffmpeg v1 (decoder priming, ~2 frames). When matching his export, measure by cross-correlation, not by trusting the In value.
+
+### 7e. Zaidi music selection (the posted tracks are the truth)
+- **Lesson:** the client replaced many of Daniel's warm chill / deep-house picks on the posted Reels. Base music choices on the tracks actually posted on @zaidijewelers, not on Daniel's original drafts.
+- **Why:** what the client posts is the approved taste; drafts were overridden.
+- **Gotcha:** Instagram hides licensed audio when logged out (the downloaded posts in `/workspace/zaidi-music/client/` have no track/artist metadata). **Ask Daniel for the track names** of posted Reels instead of guessing from audio. Analysis script for BPM/key/LUFS/energy-jump: `/workspace/zaidi-music/an.py`.

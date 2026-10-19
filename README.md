@@ -32,3 +32,12 @@ Clients covered: **Zaidi Jewelers** (a jewelry store launch campaign: vertical R
 
 ## Provenance
 Compiled Oct 18 2026 from `/workspace/editing-style-guide.md`, `/workspace/zaidi-grade-notes.md`, `zaidi4–8/PROGRESS.md`, `zaidi/adr/PROGRESS.md`, `chainlink-edit/c0141/PROGRESS.md`, `chainlink-edit/brand_brief.md`, `zaidi/brand.md`, the caption scripts (`zaidi/make_subs.py`, `zaidi/v7.py`, `zaidi2/build8/cap.py`, `zaidi4/build3/title.py`) and the Chainlink build scripts (`chainlink-edit/c0142/build.py`, `path.py`). Example stills were left out (the upload path only supports text files); the comparison images are listed by path in `color-grading.md`.
+
+## Oct 18 2026 consolidation
+Daniel asked to "learn from everything we worked on today". Today's rules were added as dated sections, each with his note, the why, and the example → fix:
+- `shot-selection.md` §3–§5: narrative Reel rules from RH-4 (rules 18–26), beat-rule scope, talking-head take rules (27–31).
+- `audio.md` §7: never clip word endings, throat clears, no Foley on Zaidi, RH-4 music in-point, Zaidi music from posted tracks.
+- `workflow-and-qc.md` §8–§9: resumable PROGRESS.md, speaker identity, every-frame graphics audit, matching Daniel's version, **Daniel's review patterns**.
+- `resolve-notes.md` (end): Studio vs Lite, scripting doesn't connect, +90 / 0.5625, API name fix, his node tree.
+- `clients/zaidi.md` §11, `clients/chainlink.md` §10.
+`LEARNINGS.md` (Build's session log) stays the evidence for every RH-4 number; these sections cite it as L§n and promote its findings because Daniel asked.

@@ -34,3 +34,14 @@ Everything so far was built with ffmpeg/Python/Remotion, not Resolve. This file 
 
 ## Deliver page
 - Masters: H.265 10-bit 4K or ProRes; share copies H.264 under 200 MB; bt709 tags; AAC 48 kHz.
+
+## Oct 18 2026: what is now confirmed (read LEARNINGS.md §1–§6, §13 first)
+These replace the ASSUMPTIONS above where they conflict. LEARNINGS.md is the authority.
+- **Two Resolve apps** on the Mac: **Studio** `/Applications/DaVinci Resolve/DaVinci Resolve.app` (bundle `com.blackmagic-design.DaVinciResolve`, 21.0.0b) holds the projects; **Lite** `/Applications/DaVinci Resolve.app` is the wrong one. `open -a "DaVinci Resolve"` launches Lite. (Grok Bot's RH-4 v1 report wrongly called it "the free version".)
+- **Scripting does not connect on his Mac**: `scriptapp("Resolve")` returns None even in Studio with External scripting = Local; a Fusion probe printed RESOLVE_NIL; TCP 1144 not listening. Don't retry it. Build's working method is editing the project `Project.db` with Studio quit (L§2–§6). The RH-4 v2 in-app script (`/workspace/zaidi_rh4/rh4_resolve.py`, installed under Fusion/Scripts/Utility) is untested for that reason.
+- **Sideways Sony rolls**: Inspector Rotation **+90** (not −90) and Zoom **0.5625** (9/16) = full upright 1080×1920 frame under cover scaling (L§4). Zoom 0.5 (our v1 guess) and 16/9 are wrong. An upright 1080×1920 end card uses rotation 0, zoom 1 (his RH-4 card is keyed 1.28→1.16).
+- **Pan/Tilt** are inspector pixels (stored fraction × 1080 / × 1920, L§13). Empirically, on a 2.29× punch-in the crop centre moved ≈0.45 × tilt px (negative = up) and ≈ −1.6 × pan px horizontally; sign not checked in the viewer.
+- **API name fix**: there is no `MediaPool.AppendToMediaPool`; clipInfo with startFrame/endFrame goes to `MediaPool.AppendToTimeline` (endFrame inclusive; `mediaType` 1 video, 2 audio; `recordFrame` for placement). Transform keyframes cannot be set via the API (ramps are manual or via Project.db, L§13).
+- **Full files in the pool, cuts via In/duration** (Daniel's correction, L§5). Never import pre-rendered trims.
+- **His real node tree (RH-4)**: curves → primary wheels → ResolveFX Glow → ResolveFX Vignette (Advanced), pasted per clip, two wheel presets by setup, no LUT (L§13). This replaces the suggested tree above for this kind of reel; the fitted cubes are estimates. To reuse his grade in a new timeline, `TimelineItem.CopyGrades([targets])` from his graded items (untested here) beats a LUT.
+- ffmpeg reproduction of his RH-4 grade (for review files only): fitted per-look cubes `/workspace/zaidi_rh4/rh4_look{A,B,S}.cube` + radial vignette mask; `blend` must run in gbrp or the chroma gets multiplied (green frames).

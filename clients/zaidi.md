@@ -101,3 +101,17 @@ See `color-grading.md`. Short version: Daniel grades the finals himself. Use his
 | Zaidi 7 | Single shot: hand + rings on a steering wheel in sun with flares, 11.01s | v2 (graded by Daniel) |
 | Zaidi 8 (RH-3) | Removing jewelry into a bowl, lying down reading, 20.12s | v3 graded by Daniel; v5_graded adds title + logo |
 | Phone Reel | Phone-call launch announcement (caller + automated voice), captions | v7 captions; ADR v8→v10 |
+
+## 11. Oct 18 2026: RH-4 and music lessons
+*Promoted Oct 18 2026 at Daniel's request ("learn from everything we worked on today"). Measurements stay in `LEARNINGS.md`; where a rule cites a section (e.g. L§13) that log is the evidence and wins on numbers.*
+
+### RH-4 (narrative Reel, "Cake Bake" café → city centre / Palladium, props cup/books/newspaper)
+- **Daniel's approved structure** (L§11/§13; reproduced as `/workspace/zaidi_rh4/rh4_v2.mp4`, notes in `/workspace/zaidi_rh4/EDIT_NOTES.md`): seated reach (2.30 s) → lid off (rings) → stir (punch-in 1.09) → end of sip (full) → overhead empty cup → reading → lift next magazine → page lands on jewelry → tight sip with bracelet (1.29) → square drink → lantern walk → empty street → arm+bracelet+cup at fountain → fountain portrait (0.79) → sits down → bench punch-in (1.10→1.02, 2.30 s) → zaidi card. 751 frames, 25.06 s.
+- **What v1 got wrong and the fix:** v1 copied the reference montage beat-for-beat (back-view walk opener, isolated product inserts, tight face/chest/chin details, wide bench ending, cuts on reference times). Daniel's version: open mid-action, the cup carries the story, jewelry only on an acting hand, cut when the action completes, slow zoom ramps, split the sip wide→tight. See shot-selection.md §3 rules 18–26.
+- **Reference matching, revised:** match the reference's *feel and story beats*, not its shot list, when our footage tells a better story with the props. "Match the reference shot for shot" (§3) still applies to single-shot and title-copy jobs.
+- **End card:** the real zaidi / Jewelers logo centred on black, 480 px wide at 1080 (from the 280 px site PNG, upscaled), zoom 1.28→1.16 over 57 frames, fades to black from card frame 20 over 37 frames, music fades with it. Never another brand's name (LOHR) on screen.
+- **Grade:** his tree (curves → wheels → Glow → Vignette), two presets: Look A for hands/table, Look B for faces and exteriors (brighter, warm, third channel pulled = less green). Street plate: smaller opposite hue bow, default glow. Not a cool grade. Numbers in L§13.
+- **Sound:** song only. No Foley (rejected, L§12).
+
+### Music
+- The client replaced many of Daniel's warm chill / deep-house picks on the posted Reels. **Choose from what was actually posted.** Instagram hides licensed audio when logged out, so ask Daniel for the track names. Candidate analysis: `/workspace/zaidi-music/an.py` (BPM, key, LUFS, energy jump). Posted Reels downloaded in `/workspace/zaidi-music/client/` (Oct 1–7 2026).

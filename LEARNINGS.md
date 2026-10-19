@@ -760,3 +760,14 @@ Leave out of `references/` until he confirms any of it:
 - The rejected Foley cues.
 
 The jobs file was overwritten to this cut after this section was written, so the next diff starts here.
+
+## 14. Promoted on 18 Oct 2026 (cross-reference)
+
+Daniel asked Grok Bot to "learn from everything we worked on today". These findings from sections 4, 5, 11, 12 and 13 are now in the style files, each cited as L§n:
+
+- `shot-selection.md` §3–§4: the narrative-Reel rules and the scoped beat rule.
+- `audio.md` §7c–§7d: no Foley, and the music in-point.
+- `resolve-notes.md`: the Oct 18 block.
+- `clients/zaidi.md` §11.
+
+This log stays the authority for the numbers. If a style file disagrees with a measurement here, this file wins.

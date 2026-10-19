@@ -80,3 +80,40 @@ Files are versioned `name_vN.mp4`, never overwritten; the build script for each 
 ## 7. Practical environment notes
 - Daniel's Mac (where the T7 Shield mounts) runs zsh with ffmpeg at `~/bin/ffmpeg`. Copy jobs to the editing box are capped at 100 MiB per file and only from `~/` paths.
 - Image previews cache by filename; always write new still filenames when iterating.
+
+## 8. Oct 18 2026 lessons
+*Promoted Oct 18 2026 at Daniel's request ("learn from everything we worked on today"). Measurements stay in `LEARNINGS.md`; where a rule cites a section (e.g. L§13) that log is the evidence and wins on numbers.*
+
+### 8a. Resumable jobs (why work was slow today)
+- Most delay came from flaky transfers: pillar (Daniel's Linux box) went offline for hours (C0141 12:02–18:20, C0143 from 21:57), and Mac copies dropped or silently delivered a stale file (RH-4 card.png arrived as the old 33 KB version; verify with md5 on both ends).
+- **Rule:** keep `PROGRESS.md` in every job folder, appended at each step: sources, scripts and how to run them, what's done, what's pending, and exact source ranges still needed from an offline machine. *C0143 PROGRESS lists the pending chunk 255.0–263.0 and the two lines it unlocks.*
+- Extraction loops: run ffmpeg with `-nostdin` inside `while read` loops (x.sh fed ffmpeg's stdin from the list and only made 1 of 21 chunks; fixed in x2.sh).
+- CopyToBox ≤100 MiB and only from `~/`: render on the Mac, copy the final; do analysis on a 540p proxy.
+
+### 8b. Speaker identity
+- **Confirm who is speaking (Daniel or Devon) before writing copy or graphics.** C0143 was Devon, not Daniel; Devon's voice and copy rules apply (clients/chainlink.md). If a frame check is ambiguous, ask.
+
+### 8c. Every-frame graphics audit (Chainlink, required before final)
+1. Render graphics only (captions hidden, FS backgrounds hidden, black bg, scale 0.5).
+2. Edge test: any pixel >18 within a 48 px margin (24 at 0.5 scale) on >20 pixels flags the frame (full-bleed FS backgrounds excepted).
+3. Clip test: render again with overflow/clip-path disabled; a diff of >60 pixels by >40 levels means a container is slicing content.
+4. Must report 0 edge and 0 clip frames; inspect any flagged range every 3rd frame on a contact sheet.
+- Tool: `/workspace/chainlink-edit/c0143/edgeaudit.py run|check`. Plus `ovl.py` (graphics vs captions overlap must be zero runs).
+
+### 8d. Matching a reference or Daniel's version
+- Scene-detect his export (`ffmpeg select='gt(scene,0.12)'`), take mid-shot stills into a contact sheet, and compare per shot: source window, order, duration, zoom (alignment search), grade (frame-pair fit), text, music offset (cross-correlation). Scene filters can miss cuts between similar takes (L§7): check frames each side.
+
+## 9. Daniel's review patterns (check these before every delivery)
+What he catches, in rough order of frequency. Each one has cost a version.
+| Pattern | His notes that show it | Pre-delivery check |
+|---|---|---|
+| **Audio cut artifacts** | "endings clipped" (C0141 v1); throat clear (C0143 v2) | Listen to every join on headphones; RMS at every out ≥20 dB under speech; no non-word blips. |
+| **Stutters, false starts, duplicate lines** | "false starts in A" (C0141); "and, And Chainlink"; duplicated "it's free" (C0143) | Short-window transcription at every join and inside every segment; n-gram repeat scan. |
+| **Unfinished thoughts** | "buried under the random…" cut off (C0143) | Read the output transcript: every sentence ends on its last word. |
+| **Graphics framing** | Awkward crops, partial cards, ring highlights, things sliding off-frame (C0143 v2→v4); graphics over captions; idle graphics (C0141 v3) | edgeaudit.py 0/0, ovl.py 0, idle-hold audit (>0.5 s with nothing happening). |
+| **Invented content** | "$300 / night" invented stat; struck "Random stuff" row (C0143); invented UI | Every number and screen traceable to the brief or a real screenshot. |
+| **Wrong take** | rehearsal/phone takes (Zaidi 4); head-down take (C0143) | Gaze/delivery audit on every take used. |
+| **Shake and angle-finding** | Zaidi 4, 5, 7 | Background jitter metric; 4fps strip at in/out. |
+| **Story over matching** | RH-4: rebuilt v1's montage into an action-led story | Does every shot have a verb? Is the prop carried? Jewelry on an acting hand? |
+| **Over-processing** | Foley "terrible" (RH-4); "Paper SFX too much" (Zaidi 5); "abysmal" regrade (Zaidi outdoor) | Default minimal: no SFX, conservative grade. |
+| **Pacing and length** | choppy/slow (Zaidi 4); Chainlink under 90 s | Shot-length table vs targets; total length vs brief. |
