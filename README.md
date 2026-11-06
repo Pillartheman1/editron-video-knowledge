@@ -1,5 +1,10 @@
 # Editron video knowledge base (for Grok Build)
 
+## Two wings
+
+- **Editing wing** (DaVinci Resolve): the existing files at the repository root. Same reading order as today (the list below). The rest of this file is that wing.
+- **Generation wing** (Blender): everything under `generation/`. Entirely separate. Do not mix rules across wings. Start at `generation/README.md`.
+
 **Purpose.** This repo teaches **Grok Build**, a coding agent that edits Daniel Klabunde's videos directly in **DaVinci Resolve** (scripting API, timelines, colour nodes), how Daniel wants his edits made. It is compiled from the real working notes of the earlier edits: the editing style guide, the grade notes, every project `PROGRESS.md`, the Zaidi brand notes, the approved caption scripts and the Chainlink edit brief. Nothing here is invented. Where something is unknown or only inferred, it is marked **UNKNOWN** or **ASSUMPTION**.
 
 Clients covered: **Zaidi Jewelers** (a jewelry store launch campaign: vertical Reels) and **Chainlink** (Daniel's nightlife CRM app: talking-head promos with Daniel and Devon).
